@@ -6,11 +6,12 @@ form.addEventListener("submit", event => {
   formData = new FormData(form);
   const url = formData.get("url");
   const top = formData.get("top");
-  const bot = formData.get("bot");
-  makeMeme(url, top, bot);
+  const bottom = formData.get("bottom");
+  form.reset();
+  makeMeme(url, top, bottom);
 });
 
-function makeMeme(url, top, bot) {
-  console.log(top);
+function makeMeme(url, top, bottom) {
+  console.log(url + " " + top + " " + bottom);
 }
 
