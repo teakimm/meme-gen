@@ -1,0 +1,14 @@
+@font-face {
+  font-family: import;
+  src: url(./assets/impact.ttf);
+}
+body {
+  font-family: import, sans-serif;
+  background: rgb(82, 82, 82);
+  color: white;
+}
+.title {
+  font-weight: bold;
+  font-size: 100px;
+  -webkit-text-stroke: 3px black;
+}
