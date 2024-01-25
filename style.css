@@ -37,6 +37,23 @@ body {
   height: 25vw;
   border-radius: 15px;
 }
+.grid-item h2 {
+  font-family: import;
+  -webkit-text-stroke: calc(1px + 0.015em) black;
+  font-size: 50px;
+  margin: 15px;
+  position: absolute;
+  max-width: 100%;
+  text-align: center;
+  word-wrap: break-word;
+}
+.top-text {
+  top: 0;
+}
+.bot-text {
+  bottom: 0;
+}
+
 .settings {
   display: none;
   position: absolute;
@@ -48,7 +65,10 @@ body {
   display: block;
 }
 .grid-item:hover img {
-  opacity: 0.25;
+  opacity: 0.15;
+}
+.grid-item:hover h2 {
+  opacity: 0.08;
 }
 .form div {
   display: flex;

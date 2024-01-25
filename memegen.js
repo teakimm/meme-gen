@@ -1,6 +1,4 @@
-const newMemeBtn = document.querySelector(".new-meme");
-
-let formData;
+let memeList = [];
 
 function makeForm() {
   const create = document.querySelector(".create");
@@ -59,21 +57,80 @@ function makeForm() {
   create.appendChild(formContainer);
 }
 
-newMemeBtn.addEventListener("click", event => {
+
+const gridContainer = document.querySelector(".grid-container");
+
+function constructMeme(index) {
+  const bot = memeList[index].botKey;
+  const gridItem = document.createElement("div");
+  gridItem.setAttribute("class", "grid-item");
+  //create an element for the image
+  const memeImage = document.createElement("img");
+  memeImage.setAttribute("src", memeList[index].urlKey);
+  memeImage.setAttribute("alt", "This is your meme.");
+  gridItem.appendChild(memeImage);
+  //create the top text
+  const topText = document.createElement("h2");
+  topText.setAttribute("class", "top-text");
+  topText.textContent = memeList[index].topKey;
+  gridItem.appendChild(topText);
+  //create the bot text
+  const botText = document.createElement("h2");
+  botText.setAttribute("class", "bot-text");
+  botText.textContent = memeList[index].botKey;
+  //create the settings
+  const settings = document.createElement
+
+
+
+
+  gridItem.appendChild(botText);
+  gridContainer.appendChild(gridItem);
+}
+
+//this is the function to get the list of memes adds them to the dom
+function populateMemes() {
+  gridContainer.replaceChildren();
+  for(let i = 0; i < memeList.length; i++) {
+    constructMeme(i);
+  }
+  //create new meme needs to be remade
+  const createMeme = document.createElement("div");
+  createMeme.classList.add("grid-item", "create");
+  const makeBtn = document.createElement("button");
+  makeBtn.setAttribute("class", "new-meme");
+  makeBtn.textContent = "New Meme";
+  createMeme.appendChild(makeBtn);
+  gridContainer.appendChild(createMeme);
+}
+
+/*the dom only needs to be updated when a new meme is made, and this is the logic
+to get the data from the form */
+function appendMemes() {
+  const newMemeBtn = document.querySelector(".new-meme");
   newMemeBtn.style.display = "none";
   makeForm();
   const form = document.querySelector(".form");
   form.addEventListener("submit", event => {
     event.preventDefault();
-    formData = new FormData(form);
+    let formData = new FormData(form);
     const urlData = formData.get("url");
     const topData = formData.get("top");
     const botData = formData.get("bot");
-    form.reset();
-    makeMeme(urlData, topData, botData);
+    let currentMeme = {
+      urlKey : urlData,
+      topKey : topData,
+      botKey : botData,
+    }
+    memeList.push(currentMeme);
+    populateMemes();
   });
-});
-
-function makeMeme() {
-  console.log(formData);
 }
+function listenClicks() {
+  document.addEventListener("click", event => {
+    if(event.target.className === "new-meme") {
+      appendMemes();
+    }
+  });
+}
+listenClicks();
