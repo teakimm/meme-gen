@@ -13,20 +13,32 @@
     <form class="form">
       <div>
         <label for="url">Image URL:</label>
-        <input id="url" type="text"  name="url" required placeholder="Paste image adress here" >
+        <input id="url" type="url"  name="url" required placeholder="Paste image adress here" >
       </div>
       <div>
         <label for="top">Top Text:</label>
-        <input id="top" type="text" name="top" placeholder="MY FACE WHEN">
+        <input id="top" type="text" name="top" placeholder="TOP TEXT">
       </div>
       <div>
         <label for="bottom">Bottom Text:</label>
-        <input id="bottom" type="text" name="bottom" placeholder="YOU MAKE THE PERFECT MEME">
+        <input id="bottom" type="text" name="bottom" placeholder="BOTTOM TEXT">
       </div>
       <div class="submit">
         <input type="submit" value="Memeify!">
       </div>
     </form>
+  </div>
+  <div class="grid-container">
+    <div class="grid-item">
+      <img src="https://img.freepik.com/free-photo/cute-domestic-kitten-sits-window-staring-outside-generative-ai_188544-12519.jpg" alt="">
+      <div class="settings">
+        <button class="edit">Edit</button>
+        <button class="delete">Delete</button>
+      </div>
+    </div>
+    <div class="grid-item create">
+      <button>New Meme</button>
+    </div>
   </div>
 </body>
 </html>
