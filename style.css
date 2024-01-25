@@ -1,6 +1,6 @@
 @font-face {
   font-family: import;
-  src: url(./assets/impact.ttf);
+  src: url(./assets/fonts/impact.ttf);
 }
 body {
   font-family: sans-serif;
@@ -62,26 +62,20 @@ body {
   transform: translate(-50%, -50%);
 }
 .grid-item:hover .settings{
-  display: block;
+  display: flex;
+  gap: 25px;
 }
-.grid-item:hover img {
+.grid-item:hover .meme-img {
   opacity: 0.15;
 }
 .grid-item:hover h2 {
   opacity: 0.08;
 }
-.form div {
-  display: flex;
-  flex-direction: column;
-}
-.form-container {
-  position: absolute;
-}
+
 button:hover, input[type="submit"]:hover {
   cursor: pointer;
 }
-
-.new-meme {
+button {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -92,4 +86,44 @@ button:hover, input[type="submit"]:hover {
   height: 50px;
   border-radius: 25px;
   font-size: 50px;
+}
+
+.edit img, .remove img {
+  height: 25px;
+  width: 25px;
+  opacity: 1;
+  pointer-events: none;
+}
+.form .submit-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+.submit-container [type="submit"], .cancel {
+  background: none;
+  border-radius: 5px;
+  width: 100px;
+  height: 35px;
+  font-size: 1em;
+  text-align: center;
+  color: white;
+  border: solid white;
+}
+.form-container {
+  position: absolute;
+}
+.form div {
+  display: flex;
+  flex-direction: column;
+}
+.form div input {
+  height: 30px;
+}
+.form-container {
+  width: 75%;
+}
+.submit-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
 }

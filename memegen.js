@@ -58,13 +58,18 @@ function constructForm(targetSelector) {
   botDiv.appendChild(botInput);
   formEle.appendChild(botDiv);
   //create subbmission
+  const submitContainer = document.createElement("div");
+  submitContainer.setAttribute("class", "submit-container");
+  const cancel = document.createElement("button");
+  cancel.setAttribute("class", "cancel");
+  cancel.textContent = "Cancel"
   if(isEdit) {
     const editMeme = document.createElement("div");
     editMeme.setAttribute("class", "editMeme");
     const editSubmit = document.createElement("input");
     editSubmit.setAttribute("type", "submit");
     editSubmit.setAttribute("value", "Edit Meme");
-    formEle.appendChild(editSubmit);
+    submitContainer.appendChild(editSubmit);
   } else {
     const submit = document.createElement("div");
     submit.setAttribute("class", "submit");
@@ -72,8 +77,10 @@ function constructForm(targetSelector) {
     submitInput.setAttribute("type", "submit");
     submitInput.setAttribute("value", "Memeify!");
     submit.appendChild(submitInput);
-    formEle.appendChild(submit);
+    submitContainer.appendChild(submit);
   }
+  submitContainer.appendChild(cancel);
+  formEle.appendChild(submitContainer);
   //append it all
   formContainer.appendChild(formEle);
   targetDiv.appendChild(formContainer);
@@ -89,6 +96,7 @@ function constructMeme(index) {
   const memeImage = document.createElement("img");
   memeImage.setAttribute("src", memeList[index].urlKey);
   memeImage.setAttribute("alt", "This is your meme.");
+  memeImage.setAttribute("class", "meme-img")
   gridItem.appendChild(memeImage);
   //create the top text
   const topText = document.createElement("h2");
@@ -106,11 +114,17 @@ function constructMeme(index) {
   const edit = document.createElement("button");
   edit.classList.add("edit", "index-" + index);
   //^this will help in finding which index to get data from
-  edit.textContent = "Edit";
+  const cog = document.createElement("img");
+  cog.setAttribute("src", "./assets/pngs/cog.png");
+  cog.setAttribute("class", "cog");
+  edit.appendChild(cog);
   const remove = document.createElement("button");
   remove.classList.add("remove", "index-" + index);
   //^this will help in finding which index to remove;
-  remove.textContent = "Remove";
+  const trash = document.createElement("img");
+  trash.setAttribute("src", "./assets/pngs/trash.png");
+  trash.setAttribute("class", "trash");
+  remove.appendChild(trash);
   settings.appendChild(edit);
   settings.appendChild(remove);
   gridItem.appendChild(settings)
@@ -180,6 +194,12 @@ function listenClicks() {
     }
     if(event.target.classList.contains("edit")) {
       populateMemes();
+      const memeOpacity = document.querySelectorAll(".meme-img")[parseInt(event.target.classList[1].slice(6))];
+      const topOpacity = document.querySelectorAll(".top-text")[parseInt(event.target.classList[1].slice(6))];;
+      const botOpactiy = document.querySelectorAll(".bot-text")[parseInt(event.target.classList[1].slice(6))];;
+      memeOpacity.style.opacity = 0.15;
+      topOpacity.style.opacity = 0.08;
+      botOpactiy.style.opacity = 0.08;
       editMeme(event.target.classList[1]);
       form = document.querySelector(".form");
       form.addEventListener("submit",  innerEvent => {
@@ -196,6 +216,9 @@ function listenClicks() {
         memeList[parseInt(event.target.classList[1].slice(6))] = currentMeme;
         populateMemes();
       });
+    }
+    if(event.target.className === "cancel") {
+      populateMemes();
     }
   });
 }
