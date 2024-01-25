@@ -74,3 +74,22 @@ body {
   display: flex;
   flex-direction: column;
 }
+.form-container {
+  position: absolute;
+}
+button:hover, input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+.new-meme {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: none;
+  border: 2px solid white;
+  color: white;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  font-size: 50px;
+}
