@@ -3,7 +3,7 @@
   src: url(./assets/impact.ttf);
 }
 body {
-  font-family: import, sans-serif;
+  font-family: sans-serif;
   background: #161A1D;
   color: white;
   display: flex;
@@ -11,6 +11,7 @@ body {
   align-items: center;
 }
 .title {
+  font-family: import;
   font-weight: bold;
   font-size: 100px;
   -webkit-text-stroke: 2px black;
@@ -26,8 +27,8 @@ body {
   align-items: center;
   position: relative;
   background: #282E33;
-  min-width: 25vw;
-  min-height: 25vw;
+  width: 25vw;
+  height: 25vw;
   border-radius: 15px;
 }
 .grid-item img {
@@ -48,4 +49,8 @@ body {
 }
 .grid-item:hover img {
   opacity: 0.25;
+}
+.form div {
+  display: flex;
+  flex-direction: column;
 }
